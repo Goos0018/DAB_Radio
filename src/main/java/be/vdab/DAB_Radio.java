@@ -13,10 +13,10 @@ public class DAB_Radio {
             "Nieuws+",
             "MNM Hits"
     };
-    private boolean status;
-    private int broadCastNumber;
+    private boolean status = false;
+    private int broadCastNumber = 1;
 
-    public boolean isStatus() {
+    public boolean getStatus() {
         return status;
     }
 
@@ -34,12 +34,13 @@ public class DAB_Radio {
 
     public String getResponse() {
         String response;
-        if (this.status = false) {
+        if (!getStatus()) {
             response = "Zet eerst de radio aan!";
-        } else if (this.broadCastNumber < 1 && this.broadCastNumber > 9) {
-            response = "Geen geldig zendernummer!";
+        } else if (this.broadCastNumber > 0 && this.broadCastNumber < 10) {
+            response = "U luistert naar " + BroadCastNames[this.broadCastNumber-1] +
+                    " (zendernummer " + this.broadCastNumber + ")" ;
         } else {
-            response = "U luistert naar" + BroadCastNames[this.broadCastNumber - 1];
+             response = "Geen geldig zendernummer!";
         }
         return response;
     }
